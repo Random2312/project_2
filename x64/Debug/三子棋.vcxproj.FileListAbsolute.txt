@@ -1,0 +1,2 @@
+E:\C program\VSproject\三子棋\三子棋\x64\Debug\三子棋.exe
+E:\git code\三子棋\x64\Debug\三子棋.exe

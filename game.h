@@ -4,8 +4,8 @@
 #include <time.h>
 #include <stdio.h>
 
-#define ROW 3  //行
-#define COL 3  //列
+#define ROW 5  //行
+#define COL 5  //列
 
 //初始化,将数组元素初始化成空格
 void InitBoard(char board[ROW][COL], int row, int col);

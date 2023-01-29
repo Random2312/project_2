@@ -13,7 +13,7 @@ void InitBoard(char board[ROW][COL], int row, int col)
 }
 
 //¥Ú”°∆Â≈Ã
-void DisplayBoard(char board[ROW][COL], int row, int col)
+void DisplayBoard(char board[ROW][COL], int row, int col)//”≈ªØ*****************œ‘ æ––¡–œ¬±Í
 {
 	for (int i = 0; i < row; i++)
 	{
@@ -97,26 +97,35 @@ void ComputerMove(char board[ROW][COL], int row, int col)
 * µÁƒ‘ªÒ §∑µªÿ #
 * ∆Ωæ÷∑µªÿ P
 * ºÃ–¯∑µªÿ J*/
-char isWin(char board[ROW][COL], int row, int col)/************************¥À∫Ø ˝¥˝”≈ªØ******************************/
+char isWin(char board[ROW][COL], int row, int col)
 {
-	//“ª––œ‡µ»
 	for (int i = 0; i < row; i++)
-	{
-		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ')
-
-			return board[i][0];
+	{	
+		for (int j = 0; j < col; j++)
+		{ 
+			//“ª––œ‡µ»
+			if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ')
+			{
+				return board[i][0];
+			}
+			//“ª¡–œ‡µ»
+			if (board[0][j] == board[1][j] && board[1][j] == board[2][j] && board[0][j] != ' ')
+			{
+				return board[0][j];
+			}
+			//’˝∂‘Ω«œﬂ
+			if (board[i][j] == board[i + 1][j + 1] && board[i + 1][j + 1] == board[i + 2][j + 2] && board[i][j] != ' ')
+			{
+				return board[i][j];
+			}
+			//∑¥∂‘Ω«œﬂ
+			if (board[i][col - j - 1] == board[i + 1][col - j - 2] && board[i + 1][col - j - 2] == board[i + 2][col - j - 3] && board[i][col - j - 1] != ' ')//÷ª“™»Œ“‚“ª∏ˆ‘™Àÿ≤ªµ»”⁄ø’∏Ò
+			{
+				return board[i][col - j - 1];
+			}
+		}
 	}
-	//“ª¡–œ‡µ»
-	for (int j = 0; j < col; j++)
-	{
-		if (board[0][j] == board[1][j] && board[1][j] == board[2][j] && board[0][j] != ' ')
-		
-			return board[0][j];
-	}
-	//∂‘Ω«œﬂœ‡µ»   (”≈ªØ£¨––¡– «À¿µƒ)
-	if ((board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[1][1] != ' ') || (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[2][0] != ' '))
-		return board[0][0];
-
+	
 	//ºÏ≤È «∑Ò∆Ωæ÷,∆Â≈Ã¬˙1£¨Œ¥¬˙0
 	int flag=isFull(board,ROW,COL);
 	if (flag == 1)
@@ -127,8 +136,7 @@ char isWin(char board[ROW][COL], int row, int col)/************************¥À∫Ø 
 	return 'J';
 }
 
-
-//ºÏ≤È «∑Ò∆Ωæ÷
+//ºÏ≤È «∑Ò∆Ωæ÷,∆Â≈Ã¬˙∑µªÿ1£¨Œ¥¬˙∑µªÿ0
 int isFull(char board[ROW][COL], int row, int col)
 {
 	for(int i=0;i<row;i++)
